@@ -1,7 +1,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CreditCardIcon } from "@hugeicons/core-free-icons";
 
-// Section: Pricing plans grid with CTAs
+// Section: Tasklyst pricing grid for SaaS audience
 export function PricingSection() {
   return (
     <section
@@ -17,12 +17,14 @@ export function PricingSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232]">Pricing</p>
           <h2 className="flex items-center gap-3 text-3xl font-bold text-[#341404] sm:text-4xl">
             <HugeiconsIcon icon={CreditCardIcon} size={28} color="#fb7232" strokeWidth={1.6} />
-            Predictable plans that scale with you
+            Plans for every team
           </h2>
-          <p className="text-base text-[#6a3515]">Start free, upgrade when you need enterprise controls. Usage counters and Stripe webhook stubs included.</p>
+          <p className="text-base text-[#6a3515]">
+            Start free, upgrade any time. All plans include AI-powered suggestions and board view. Questions? <a href="mailto:chirag@bidx.ai" className="text-[#c75829] underline">Contact us</a>.
+          </p>
         </div>
         <div className="flex gap-3 sm:gap-4">
-          <a href="mailto:sales@example.com" className="rounded-lg bg-[#fb7232] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#e06225] hover:shadow-md">
+          <a href="mailto:chirag@bidx.ai" className="rounded-lg bg-[#fb7232] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#e06225] hover:shadow-md">
             Talk to sales
           </a>
           <a href="#legal" className="rounded-lg border border-[#fb7232]/30 bg-white px-4 py-2 text-sm font-semibold text-[#c75829] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -32,9 +34,9 @@ export function PricingSection() {
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         {[
-          { name: "Starter", price: "$0", desc: "Perfect for prototypes and internal tools.", features: ["Up to 3 teammates", "Email support", "Basic auth and RBAC"], cta: "Launch now" },
-          { name: "Growth", price: "$49", desc: "For product teams shipping to customers.", features: ["Unlimited teammates", "Webhook-ready billing", "Audit log events"], cta: "Start trial" },
-          { name: "Enterprise", price: "Custom", desc: "Security reviews, SSO, and DPAs included.", features: ["SAML/SCIM-ready", "Priority support", "Dedicated sandbox"], cta: "Book a demo" },
+          { name: "Free", price: "$0", desc: "For individuals and personal projects.", features: ["Up to 2 team members", "AI-powered planning", "Mobile access"], cta: "Try free" },
+          { name: "Pro", price: "$12", desc: "For growing teams and power users.", features: ["Unlimited members", "Team boards & reminders", "Priority email support"], cta: "Start Pro" },
+          { name: "Enterprise", price: "Custom", desc: "Enterprise security and onboarding.", features: ["SSO & advanced controls", "Dedicated workspace", "Onboarding assistance"], cta: "Contact sales" },
         ].map((plan) => (
           <div key={plan.name} className="flex flex-col gap-4 rounded-xl border border-[#fb7232]/15 bg-white p-5 shadow-sm">
             <div className="space-y-1">
@@ -48,7 +50,7 @@ export function PricingSection() {
               ))}
             </ul>
             <a
-              href="https://vercel.com/new"
+              href={plan.name === "Enterprise" ? "mailto:chirag@bidx.ai" : "#"}
               className="mt-auto inline-flex items-center justify-center rounded-lg border border-[#fb7232]/30 bg-[#ffe8da] px-3 py-2 text-sm font-semibold text-[#c75829] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               {plan.cta}
