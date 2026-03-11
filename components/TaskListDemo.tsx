@@ -40,7 +40,7 @@ export default function TaskListDemo() {
       const data = await r.json();
       setTasks(data.tasks);
     } catch (e) {
-      setError("Could not load tasks.");
+      setError("Couldn't load tasks. Please refresh and try again.");
     } finally {
       setLoading(false);
     }
@@ -62,7 +62,7 @@ export default function TaskListDemo() {
       setDue("");
       await fetchTasks();
     } catch {
-      setError("Could not add task.");
+      setError("Could not add your task. Try again.");
     } finally {
       setSubmitting(false);
     }
@@ -78,7 +78,7 @@ export default function TaskListDemo() {
       if (!r.ok) throw new Error();
       await fetchTasks();
     } catch {
-      setError("Could not update task.");
+      setError("Update failed. Please retry.");
     }
   }
 
@@ -88,7 +88,7 @@ export default function TaskListDemo() {
       if (!r.ok) throw new Error();
       await fetchTasks();
     } catch {
-      setError("Could not delete task.");
+      setError("Delete action failed.");
     }
   }
 
@@ -101,7 +101,7 @@ export default function TaskListDemo() {
         <input
           type="text"
           required
-          placeholder="New task title"
+          placeholder="What's next? (Add a task title)"
           value={title}
           minLength={2}
           maxLength={100}
@@ -109,7 +109,7 @@ export default function TaskListDemo() {
           onChange={e => setTitle(e.target.value)}
         />
         <textarea
-          placeholder="Description (optional)"
+          placeholder="Details (optional)"
           value={desc}
           onChange={e => setDesc(e.target.value)}
           className="rounded border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#fb7232]"
@@ -125,15 +125,15 @@ export default function TaskListDemo() {
           disabled={submitting || !title}
           className="rounded bg-[#fb7232] py-2 px-5 text-white font-semibold shadow hover:bg-[#e06225] transition disabled:bg-orange-200 self-end"
         >
-          {submitting ? "Adding…" : "Add Task"}
+          {submitting ? "Adding your task…" : "Add to Tasklyst"}
         </button>
         {error && <div className="text-red-700">{error}</div>}
       </form>
 
       {loading ? (
-        <div className="text-[#c75829]">Loading tasks…</div>
+        <div className="text-[#c75829]">Loading your Tasklyst…</div>
       ) : tasks.length === 0 ? (
-        <div className="text-[#7a391b]">No tasks yet! Add your first above.</div>
+        <div className="text-[#7a391b]">No tasks yet! Start organizing your day with Tasklyst.</div>
       ) : (
         <ul className="space-y-3">
           {tasks.map(task => (
@@ -182,7 +182,7 @@ export default function TaskListDemo() {
                     })
                   }
                 >
-                  {task.completed ? "Mark Incomplete" : "Mark Done"}
+                  {task.completed ? "Mark as incomplete" : "Mark as done"}
                 </button>
                 <button
                   className="rounded px-3 py-1 text-xs bg-red-100 text-red-600 hover:bg-red-200 transition"
