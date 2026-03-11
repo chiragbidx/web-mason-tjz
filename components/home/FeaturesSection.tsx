@@ -16,38 +16,40 @@ export function FeaturesSection() {
       }}
     >
       <div className="space-y-3 max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232]">Product pillars</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232]">Why Tasklyst</p>
         <h2 className="flex items-center gap-3 text-3xl font-bold text-[#341404] sm:text-4xl">
           <HugeiconsIcon icon={Settings01Icon} size={28} color="#fb7232" strokeWidth={1.6} />
-          Enterprise-ready from day one
+          Built for task mastery at any scale
         </h2>
-        <p className="text-base text-[#6a3515]">Opinionated defaults plus the guardrails you need for SOC2, GDPR, and scale.</p>
+        <p className="text-base text-[#6a3515]">
+          Whether solo or part of a fast-moving team, Tasklyst gives you an AI boost, crystal-clear organization, and the flexibility to work your way.
+        </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {[
           {
-            title: "Security & Compliance",
-            body: "Role-based access, audit logging hooks, env management, and policy-first routing ready for SOC2 review.",
+            title: "AI Task Suggestions",
+            body: "Describe your goal—let Tasklyst generate a customized, actionable plan.",
           },
           {
-            title: "Data & Observability",
-            body: "Telemetry-friendly logging, tracing placeholders, and ship-ready health endpoints for SRE handoff.",
+            title: "Real-Time Collaboration",
+            body: "Assign, comment, and update tasks instantly with your team.",
           },
           {
-            title: "Multi-tenant Friendly",
-            body: "Patterns for org/user separation, billing ids, and per-tenant feature flags without rewriting core logic.",
+            title: "Flexible Boards",
+            body: "Plan projects with boards, lists, timelines, and custom filters.",
           },
           {
-            title: "Docs & Runbooks",
-            body: "Starter guides, API reference scaffolding, and incident playbooks so support stays unblocked.",
+            title: "Deadline Reminders",
+            body: "Never miss a due date. Get notified before tasks slip through the cracks.",
           },
           {
-            title: "Performance",
-            body: "Edge-ready routing, image optimization, and caching hints that match production-grade SLAs.",
+            title: "Integrations",
+            body: "Plug into the tools you already use: calendar, notifications, and more.",
           },
           {
-            title: "Team Workflow",
-            body: "Prettier, ESLint, CI templates, and PR check recipes so contributors stay consistent.",
+            title: "Secure & Private",
+            body: "Your team's data is always encrypted and stays in your control.",
           },
         ].map((item, idx) => (
           <div
