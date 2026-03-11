@@ -21,26 +21,26 @@ export function HeroSection() {
 
       <div className="space-y-6 relative">
         <p className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232] shadow-sm">
-          Simple Panda Stack
+          Get more done, together
         </p>
         <h1 className="text-4xl font-black leading-tight text-[#3f1b08] sm:text-5xl">
-          Build and launch faster with a calm, opinionated starting point.
+          Supercharge your team's productivity with Tasklyst.
         </h1>
         <p className="max-w-3xl text-lg leading-7 text-zinc-700">
-          The Panda starter pairs clean defaults with sensible layout decisions so you can focus on product, not plumbing. Fully responsive, accessible, and easy to extend.
+          Tasklyst helps you organize, track, and accomplish work—AI-powered task planning, real-time collaboration, persistent lists, and friendly workflows for teams big and small.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap sm:gap-4 w-full">
           <a
-            href="#features"
+            href="#ai-demo"
             className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-[#fb7232] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#e06225] hover:shadow-md"
           >
-            Explore features
+            Try AI Task Planner
           </a>
           <a
-            href="#cta"
+            href="#demo"
             className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg border border-[#fb7232]/30 bg-white px-5 py-3 text-sm font-semibold text-[#c75829] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           >
-            See how it works
+            Experience the Demo
           </a>
         </div>
       </div>
@@ -49,24 +49,24 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#ffe7dd] via-white to-[#ffd9c6] opacity-70" aria-hidden />
         <div className="relative grid gap-4 p-6 sm:grid-cols-2">
           <div className="rounded-xl bg-white/80 p-4 shadow-sm ring-1 ring-[#fb7232]/20">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Launch</p>
-            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Zero-fuss deploys</p>
-            <p className="text-sm text-zinc-600">Prewired for Vercel with environment helpers and sane defaults.</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">AI Assist</p>
+            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Smart, actionable plans</p>
+            <p className="text-sm text-zinc-600">Instantly break big goals down into tasks and deadlines—just describe what you want to achieve.</p>
           </div>
           <div className="rounded-xl bg-white/80 p-4 shadow-sm ring-1 ring-[#fb7232]/20">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Design</p>
-            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Responsive by default</p>
-            <p className="text-sm text-zinc-600">Layout stretches the full viewport while keeping breathable spacing.</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Team Collaboration</p>
+            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Real-time sync</p>
+            <p className="text-sm text-zinc-600">Work together, comment, assign, and track progress with ease.</p>
           </div>
           <div className="rounded-xl bg-white/80 p-4 shadow-sm ring-1 ring-[#fb7232]/20">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Code</p>
-            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Type-safe stack</p>
-            <p className="text-sm text-zinc-600">Next.js App Router, TypeScript, ESLint, and formatting baked in.</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Stay Organized</p>
+            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Boards & timelines</p>
+            <p className="text-sm text-zinc-600">Flexible task lists, due dates, reminders, and filters keep teams focused and on track.</p>
           </div>
           <div className="rounded-xl bg-white/80 p-4 shadow-sm ring-1 ring-[#fb7232]/20">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Speed</p>
-            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">Ready in minutes</p>
-            <p className="text-sm text-zinc-600">Opinionated setup trims decisions so you can ship faster.</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#fb7232]">Always Accessible</p>
+            <p className="mt-2 text-base font-semibold text-[#4b1f0a]">On every device</p>
+            <p className="text-sm text-zinc-600">Get things done anywhere—mobile, desktop, in the office, or remote!</p>
           </div>
         </div>
       </div>
