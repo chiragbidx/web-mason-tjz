@@ -8,12 +8,12 @@ AI-facing index of the repository as it exists today. Drizzle ORM (PostgreSQL) a
 - Purpose: minimal App Router scaffold for future SaaS UI, now with Drizzle + Postgres base schema.
 - Style: file-system routing, server-preferred components.
 - Tech: Next.js 16, React 19, TypeScript 5, Tailwind-ready PostCSS, ESLint 9.
-- Present: Drizzle schema + initial migration for `users`.
+- Present: Drizzle schema + initial migration for `users`. Added: `tasks` table and demo CRUD.
 - Not present: auth routes/config, API routes, queues, tests.
 
 ## 2. Application Entry Points
 - `app/layout.tsx`: Root layout; applies globals (Geist fonts removed).
-- `app/page.tsx`: Public landing page (server component).
+- `app/page.tsx`: Tasklyst landing page (server component, with client demo/AI islands).
 - `app/globals.css`: Global styles; imports Tailwind; defines light/dark CSS variables.
 - `next.config.ts`: Minimal Next config placeholder.
 - `postcss.config.mjs`: PostCSS with `@tailwindcss/postcss`.
@@ -21,7 +21,17 @@ AI-facing index of the repository as it exists today. Drizzle ORM (PostgreSQL) a
 
 ## 3. Modules / Feature Areas
 - `app/`: UI shell and routing.
-- `components/`: Shared UI; home sections live under `components/home/`. Client-only helpers include `HeroOrbs` (hero parallax) and `AgentActionPanel` (note stub, unused by default) plus `ErrorReporter`.
+  - `app/api/ai/suggest-tasks/route.ts`: Server Action—OpenAI-powered task breakdown generator.
+  - `app/api/demo-tasks/route.ts`: API route—CRUD for Postgres-backed tasks demo.
+  - `app/api/demo-tasks/[id]/route.ts`: API route—PATCH/DELETE for demo tasks.
+  - `app/api/contact/route.ts`: Receives contact form POST requests and logs messages.
+- `components/`: Shared UI; home sections live under `components/home/`. Client-only helpers include:
+  - `HeroOrbs` (hero parallax)
+  - `AgentActionPanel` (note stub, unused by default)
+  - `ErrorReporter`
+  - `TaskAIDemo` (AI demo island)
+  - `TaskListDemo` (persistent CRUD demo)
+  - `ContactForm` (client-side form with validation, calls new contact API).
 - `public/`: Static assets (logos/icons).
 - `lib/db/`: Drizzle schema and client.
 - `drizzle/`: SQL migrations + meta journal.
@@ -30,94 +40,52 @@ AI-facing index of the repository as it exists today. Drizzle ORM (PostgreSQL) a
 
 ## 4. Routes (Controllers)
 - `/` → `app/page.tsx`
-  - Purpose: Panda-themed landing page composed of modular sections (hero, logos marquee, features, metrics, pricing, security, docs/support, legal, CTA).
-  - Layout: responsive, centered content up to ~1600px, buttons/menu wrap on small screens; client interactivity isolated to the hero parallax orbs.
-  - DTOs/validation/guards: none; render-only.
+  - Purpose: Tasklyst SaaS landing with hero, AI, demo, contact, and modular SaaS sections.
+  - Layout: responsive, centered content up to ~1600px, buttons/menu wrap on small screens; client interactivity islands for AI, CRUD, and contact.
+  - API:
+    - `/api/ai/suggest-tasks`: POST string, returns task breakdown (array).
+    - `/api/demo-tasks`: GET all, POST new; `/api/demo-tasks/[id]`: PATCH/DELETE.
+    - `/api/contact`: POST contact form submission.
 
 ## 5. Services & Providers
-- None. Introduce server-only helpers under `lib/` when backend/data is added.
+- None. Backend/data helpers live under `lib/`.
 
 ## 6. Data Layer
-- ORM/DB: Drizzle ORM + PostgreSQL. Schema lives under `lib/db/`; migrations live under `drizzle/`. Keep migrations and schema in sync; avoid hand-editing beyond committed SQL unless intentional.
+- ORM/DB: Drizzle ORM + PostgreSQL. Schema under `lib/db/`; migrations under `drizzle/`.
+  - `lib/db/schema.ts`: Now includes `tasks` table for persistent demo.
+  - `drizzle/0001_tasks.sql`: Schema for `tasks`.
+  - `drizzle/meta/_journal.json`: Updated for new migration.
 
 ## 7. DTOs, Schemas & Validation
-- None. When adding APIs/forms, keep validators with the feature or under `lib/validation/` and document contracts.
+- Homegrown for demos; future forms/apis to place Zod/validators in `lib/validation/` or co-located.
 
 ## 8. Cross-Cutting Concerns
-- Auth, logging, tracing, error filters: not implemented. Centralize any new cross-cutting utilities under `lib/` and wire via layouts/middleware intentionally.
+- Error logging/surface via client/server hooks. Owner info (Chirag Dodiya) in site footer.
 
 ## 9. Configuration & Environment
-- `env.example`: lists `OPENAI_API_KEY`, `DATABASE_URL` (Postgres), `DATABASE_SSL`, `BASE_URL` (canonical app URL for NextAuth; use instead of `NEXTAUTH_URL`), `AUTH_SECRET` (canonical app URL for NextAuth; use instead of `NEXTAUTH_SECRET`), optional `OPENAI_MODEL`; never commit secrets.
-- Secrets: keep in `.env.local` (gitignored) once keys exist.
-- Config files in repo: `next.config.ts`, `postcss.config.mjs`, `eslint.config.mjs`, `tsconfig.json`, `drizzle.config.ts`.
+- Required: `OPENAI_API_KEY`, `DATABASE_URL`
+- `env.example`: List new variables if needed.
+- Others: as per previous state.
 
 ## 10. Async & Background Processing
-- Queues/workers/schedulers: none. Add in a separate runtime or route handlers when required and document.
+- Queues/workers/schedulers: none.
 
 ## 11. Testing Structure
-- No tests. Suggested layout when added: unit (`__tests__/` or co-located), e2e (`e2e/` via Playwright), shared fixtures in `tests/utils/`.
+- Not present yet.
 
-## 12. File & Directory Index
-```
-.gitignore            # Git ignores
-README.md             # Operational guide
-FILES.md              # Structural index (this file)
-RULES.md              # Change boundaries (boilerplate)
-Dockerfile            # Container definition (npm ci, runs dev-supervisor)
-app/
-  favicon.ico         # Favicon
-  globals.css         # Global styles + Tailwind entry
-  layout.tsx          # Root layout with fonts
-  page.tsx            # Public landing page (composes modular sections)
-public/
-  file.svg            # Sample asset
-  globe.svg           # Sample asset
-  next.svg            # Next.js logo
-  vercel.svg          # Vercel logo
-  window.svg          # Sample asset
-scripts/
-  db-init.js          # No-op placeholder (no DB configured)
-  dev-supervisor.js   # Runs Next.js dev server (npx next dev) + git poller
-  git-poll.js         # Polls git origin for branch updates
-  error-reporter.ts   # Client-safe error forwarder used by ErrorReporter component
-components/
-  home/
-    HeroSection.tsx           # Hero with parallax orbs + feature highlights
-    LogosMarqueeSection.tsx   # Social proof marquee
-    FeaturesSection.tsx       # Product pillars grid
-    MetricsSection.tsx        # Metrics & architecture proof points
-    PricingSection.tsx        # Plans grid
-    SecuritySection.tsx       # Security & compliance
-    DocsSupportSection.tsx    # Docs and support tiers
-    LegalSection.tsx          # Legal docs and corporate details
-    CtaSection.tsx            # Final CTA / links
-  HeroOrbs.tsx         # Client parallax icons for hero
-  AgentActionPanel.tsx # Client note stub (not rendered on landing)
-  ErrorReporter.tsx   # Client component that initializes error reporter
-lib/db/
-  schema.ts           # Drizzle schema
-  client.ts           # Drizzle + pg pool client
-drizzle/
-  0000_init.sql       # Initial migration
-  meta/_journal.json  # Migration journal
-drizzle.config.ts     # Drizzle CLI config
-eslint.config.mjs     # ESLint config
-next.config.ts        # Next.js config (placeholder)
-postcss.config.mjs    # PostCSS config (Tailwind-ready)
-tsconfig.json         # TypeScript config
-package.json          # Scripts and dependencies
-package-lock.json     # Locked deps
-.git/                 # Git metadata
-```
+## 12. File & Directory Index (additions)
+...
+  components/
+    TaskAIDemo.tsx        # Client AI-powered suggestions
+    TaskListDemo.tsx      # Persistent CRUD demo
+    ContactForm.tsx       # Contact form with validation/UI
+  app/api/ai/suggest-tasks/route.ts    # AI completion server action
+  app/api/demo-tasks/route.ts          # Persistent CRUD API
+  app/api/demo-tasks/[id]/route.ts     # Task updates/deletes
+  app/api/contact/route.ts             # Contact form API
+  lib/db/schema.ts        # Now includes tasks table schema
+  drizzle/0001_tasks.sql  # Migration file for tasks table
+  drizzle/meta/_journal.json   # Migration registered
+...
 
-## 13. Safe Modification Guidance
-- New public pages: add under `app/` with route folders (e.g., `app/about/page.tsx`).
-- Future dashboard/auth: create route groups (`app/(dashboard)/...`, `app/(login)/...`) when introduced; wire shared layouts there.
-- Shared UI: place in `components/` once created; keep pure/presentational.
-- Data/API: place server code in `lib/` or `app/api/.../route.ts`; validate inputs at the edge; keep server-only dependencies out of client components.
-- Avoid expanding global CSS; prefer scoped styles.
-- Keep changes minimal; update README.md and RULES.md if scope (auth, DB, billing) is added.
-
----
-
-If structure or intent is uncertain, **STOP AND ASK** before modifying.
+[/full]
