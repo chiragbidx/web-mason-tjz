@@ -1,7 +1,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { FileBadgeIcon } from "@hugeicons/core-free-icons";
 
-// Section: Legal docs and company details
+// Section: Legal docs and company details for Tasklyst
 export function LegalSection() {
   return (
     <section
@@ -19,11 +19,13 @@ export function LegalSection() {
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232]">Legal</p>
         <h2 className="flex items-center gap-3 text-3xl font-bold text-[#341404] sm:text-4xl">
           <HugeiconsIcon icon={FileBadgeIcon} size={28} color="#fb7232" strokeWidth={1.6} />
-          Transparent terms, ready for procurement
+          Transparency and trust, always
         </h2>
-        <p className="text-base text-[#6a3515]">We ship with the paperwork your legal and procurement teams expect.</p>
+        <p className="text-base text-[#6a3515]">
+          Our legal docs are clear, accessible, and available for every customer and partner.
+        </p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {[{ label: "Master Service Agreement", link: "https://example.com/msa" }, { label: "Data Processing Addendum", link: "https://example.com/dpa" }, { label: "Privacy Policy", link: "https://example.com/privacy" }, { label: "Acceptable Use", link: "https://example.com/aup" }].map((doc, i) => (
+          {[{ label: "Terms of Service", link: "#" }, { label: "Privacy Policy", link: "#" }, { label: "Data Processing Addendum", link: "#" }, { label: "Security Statement", link: "#" }].map((doc, i) => (
             <a
               key={doc.label}
               href={doc.link}
@@ -37,16 +39,15 @@ export function LegalSection() {
         </div>
       </div>
       <div className="space-y-4 rounded-xl border border-[#fb7232]/15 bg-white/80 p-6 shadow-sm">
-        <p className="text-sm font-semibold text-[#5a2a12]">Corporate details</p>
+        <p className="text-sm font-semibold text-[#5a2a12]">Company & Contact</p>
         <ul className="space-y-2 text-sm text-[#5a2a12]">
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> HQ: San Francisco, CA • Remote first</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> EIN & W-9 ready upon request</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Vendor onboarding packet with security summary</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Production support SLAs available for enterprise plans</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Accessibility statement aligned to WCAG 2.1 AA</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> HQ: Distributed – Remote, headquartered US</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> EIN & verification docs available upon request</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Self-serve onboarding, fast vendor paperwork</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Accessibility aligned to WCAG 2.1 AA</li>
         </ul>
         <div className="rounded-lg border border-[#fb7232]/15 bg-[#ffe8da] px-4 py-3 text-sm text-[#5a2a12]">
-          Need a custom clause? Email <a className="font-semibold text-[#c75829]" href="mailto:legal@example.com">legal@example.com</a> and we will review within 2 business days.
+          Need a custom clause or support? Email <a className="font-semibold text-[#c75829]" href="mailto:chirag@bidx.ai">chirag@bidx.ai</a> and we’ll respond within 2 business days.
         </div>
       </div>
     </section>
