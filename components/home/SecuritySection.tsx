@@ -1,7 +1,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Shield01Icon } from "@hugeicons/core-free-icons";
 
-// Section: Security, compliance posture, and CTA
+// Section: Tasklyst Security, privacy, and trust
 export function SecuritySection() {
   return (
     <section
@@ -15,37 +15,41 @@ export function SecuritySection() {
       }}
     >
       <div className="space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232]">Security</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fb7232]">Security & Privacy</p>
         <h2 className="flex items-center gap-3 text-3xl font-bold text-[#341404] sm:text-4xl">
           <HugeiconsIcon icon={Shield01Icon} size={28} color="#fb7232" strokeWidth={1.6} />
-          Trust-first by default
+          Always secure, always yours
         </h2>
-        <p className="text-base text-[#6a3515]">Security review ready: least-privilege patterns, secrets hygiene, and data residency notes included.</p>
+        <p className="text-base text-[#6a3515]">
+          Tasklyst protects your project data with encryption, robust permission checks, and a privacy-first approach for all users and teams.
+        </p>
         <ul className="space-y-2 text-sm text-[#5a2a12]">
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Security checklist mapped to SOC2-Type II control families</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Incident response playbook with RACI owners and timelines</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Data Processing Addendum (DPA) starter template</li>
-          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Vendor security questionnaire boilerplate to speed up reviews</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Granular access controls—only your team can see what matters</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Encryption in transit and at rest, always-on best practices</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> GDPR and CCPA compliant, with DPA available upon request</li>
+          <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-[#fb7232]" /> Privacy inquiries handled directly by our founding team</li>
         </ul>
       </div>
       <div className="grid gap-4 rounded-xl border border-[#fb7232]/15 bg-gradient-to-br from-white via-[#fff5ee] to-white p-6 shadow-sm">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-[#5a2a12]">Compliance posture</span>
-          <span className="rounded-full bg-[#ffe8da] px-3 py-1 text-xs font-semibold text-[#c75829]">In progress</span>
+          <span className="text-sm font-semibold text-[#5a2a12]">Compliance</span>
+          <span className="rounded-full bg-[#ffe8da] px-3 py-1 text-xs font-semibold text-[#c75829]">Ongoing</span>
         </div>
         <div className="grid grid-cols-2 gap-3 text-sm text-[#5a2a12] sm:grid-cols-3">
-          {["SOC2", "GDPR", "HIPAA", "ISO 27001", "PCI Ready", "CCPA"].map((badge) => (
+          {["GDPR", "CCPA", "SOC2*", "ISO 27001*", "HIPAA*", "Privacy-first"].map((badge) => (
             <div key={badge} className="rounded-lg border border-[#fb7232]/10 bg-white/80 px-3 py-2 text-center shadow-sm">
               {badge}
             </div>
           ))}
         </div>
-        <p className="text-xs text-[#6a3515]">Need something specific? Share your latest security questionnaire and we will map controls.</p>
+        <p className="text-xs text-[#6a3515]">
+          Have security or privacy questions? Reach our founder directly.
+        </p>
         <a
-          href="mailto:security@example.com"
+          href="mailto:chirag@bidx.ai"
           className="inline-flex w-full items-center justify-center rounded-lg bg-[#fb7232] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#e06225] hover:shadow-md"
         >
-          Request security pack
+          Contact Chirag Dodiya
         </a>
       </div>
     </section>
